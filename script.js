@@ -377,3 +377,156 @@ userInput.addEventListener("keydown", (e) => {
     sendMessage();
   }
 });
+
+
+// =====================================================
+// LANDING PAGE TOKO GAME
+// =====================================================
+(function () {
+  // Aktifkan animasi reveal hanya jika JS berjalan
+  document.documentElement.classList.add("js-enabled");
+
+  // ----- Pengaturan toko (mudah diubah) -----
+  const WA_NUMBER  = "6281234567890";
+  const STORE_NAME = "Disc Arena";
+
+  const PLATFORMS = {
+    ps5:    "PlayStation 5",
+    xbox:   "Xbox Series X|S",
+    switch: "Nintendo Switch",
+  };
+
+  // Data produk contoh — ganti harga/stok sesuai tokomu
+  const PRODUCTS = [
+    // PlayStation
+    { platform: "ps5", title: "God of War Ragnarök",        genre: "Action Adventure", price: 799000, emoji: "⚔️", tag: "Best Seller" },
+    { platform: "ps5", title: "Marvel's Spider-Man 2",      genre: "Action Adventure", price: 849000, emoji: "🕷️", tag: "Populer" },
+    { platform: "ps5", title: "Astro Bot",                  genre: "Platformer",       price: 799000, emoji: "🤖", tag: "" },
+    { platform: "ps5", title: "Gran Turismo 7",             genre: "Racing",           price: 699000, emoji: "🏁", tag: "" },
+    // Xbox
+    { platform: "xbox", title: "Forza Horizon 5",           genre: "Racing",           price: 599000, emoji: "🏎️", tag: "Best Seller" },
+    { platform: "xbox", title: "Halo Infinite",             genre: "Shooter",          price: 449000, emoji: "🪖", tag: "" },
+    { platform: "xbox", title: "Starfield",                 genre: "RPG",              price: 649000, emoji: "🚀", tag: "" },
+    { platform: "xbox", title: "Hogwarts Legacy",           genre: "Action RPG",       price: 599000, emoji: "🪄", tag: "Populer" },
+    // Nintendo
+    { platform: "switch", title: "Zelda: Tears of the Kingdom", genre: "Adventure",    price: 799000, emoji: "🗡️", tag: "Best Seller" },
+    { platform: "switch", title: "Mario Kart 8 Deluxe",     genre: "Racing / Party",   price: 729000, emoji: "🍄", tag: "Populer" },
+    { platform: "switch", title: "Super Mario Bros. Wonder", genre: "Platformer",      price: 699000, emoji: "⭐", tag: "" },
+    { platform: "switch", title: "Pokémon Scarlet",         genre: "RPG",              price: 649000, emoji: "⚡", tag: "" },
+  ];
+
+  const rupiah = (n) => "Rp " + n.toLocaleString("id-ID");
+
+  const waLink = (p) => {
+    const msg = `Halo ${STORE_NAME}, saya mau pesan ${p.title} untuk ${PLATFORMS[p.platform]}. Apakah masih tersedia?`;
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+  };
+
+  // ----- Elemen -----
+  const navbar      = document.getElementById("navbar");
+  const navToggle   = document.getElementById("navToggle");
+  const navLinks    = document.getElementById("navLinks");
+  const productGrid = document.getElementById("productGrid");
+  const emptyState  = document.getElementById("emptyState");
+  const filterTabs  = document.getElementById("filterTabs");
+  const searchInput = document.getElementById("searchInput");
+
+  const filter = { platform: "all", query: "" };
+
+  // ----- Katalog -----
+  function productCard(p) {
+    return `
+      <article class="product">
+        <div class="cover ${p.platform}">
+          ${p.tag ? `<span class="tag">${p.tag}</span>` : ""}
+          <span aria-hidden="true">${p.emoji}</span>
+        </div>
+        <div class="p-body">
+          <span class="p-platform">${PLATFORMS[p.platform]}</span>
+          <h3 class="p-title">${p.title}</h3>
+          <span class="p-genre">${p.genre}</span>
+          <div class="p-foot">
+            <span class="p-price">${rupiah(p.price)}</span>
+            <a class="btn-buy" href="${waLink(p)}" target="_blank" rel="noopener">Pesan</a>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function renderProducts() {
+    const q = filter.query.trim().toLowerCase();
+    const list = PRODUCTS.filter((p) => {
+      const okPlatform = filter.platform === "all" || p.platform === filter.platform;
+      const okQuery = !q || (p.title + " " + p.genre).toLowerCase().includes(q);
+      return okPlatform && okQuery;
+    });
+    productGrid.innerHTML = list.map(productCard).join("");
+    emptyState.hidden = list.length > 0;
+  }
+
+  function setPlatform(platform) {
+    filter.platform = platform;
+    filterTabs.querySelectorAll(".tab").forEach((tab) => {
+      tab.classList.toggle("active", tab.dataset.filter === platform);
+    });
+    renderProducts();
+  }
+
+  filterTabs.addEventListener("click", (e) => {
+    const tab = e.target.closest(".tab");
+    if (tab) setPlatform(tab.dataset.filter);
+  });
+
+  searchInput.addEventListener("input", () => {
+    filter.query = searchInput.value;
+    renderProducts();
+  });
+
+  // Klik kartu platform → filter katalog + scroll
+  document.querySelectorAll(".platform-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      setPlatform(card.dataset.platform);
+      document.getElementById("katalog").scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // ----- Navbar -----
+  navToggle.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.textContent = open ? "✕" : "☰";
+  });
+
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.closest("a")) {
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.textContent = "☰";
+    }
+  });
+
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 10);
+  }, { passive: true });
+
+  // ----- Animasi muncul saat scroll -----
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add("visible");
+        observer.unobserve(el);
+        // Lepas class setelah animasi selesai agar efek hover normal kembali
+        setTimeout(() => el.classList.remove("reveal", "visible"), 800);
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => observer.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.remove("reveal"));
+  }
+
+  // ----- Mulai -----
+  renderProducts();
+})();
