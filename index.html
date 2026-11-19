@@ -3,40 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Agent Chat</title>
+  <title>Disc Arena — Toko Disc Game PlayStation, Xbox &amp; Nintendo</title>
+  <meta name="description" content="Toko disc game original untuk PlayStation, Xbox, dan Nintendo Switch. Harga bersahabat, siap kirim ke seluruh Indonesia." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#beranda" class="logo">🎮 Disc<span>Arena</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#platform">Platform</a></li>
+      <li><a href="#katalog">Katalog</a></li>
+      <li><a href="#keunggulan">Keunggulan</a></li>
+      <li><a href="#cara-pesan">Cara Pesan</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#chat">Tanya AI</a></li>
+    </ul>
+    <a href="https://wa.me/6281234567890?text=Halo%20Disc%20Arena%2C%20saya%20ingin%20bertanya" class="btn-nav" target="_blank" rel="noopener">Pesan via WA</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+  </nav>
+
   <!-- HERO SECTION -->
-  <header class="hero">
+  <header class="hero" id="beranda">
     <div class="hero-content">
-      <div class="badge">✦ Powered by AI</div>
-      <h1>Tanya Apa Saja,<br /><span>Dijawab Seketika.</span></h1>
-      <p>AI Agent siap membantu kamu 24/7. Ketik pertanyaanmu dan dapatkan jawaban cerdas secara langsung.</p>
-      <a href="#chat" class="btn-primary">Mulai Chat</a>
+      <div class="badge">🎮 Disc Original · Segel · Bergaransi</div>
+      <h1>Semua Game Favoritmu,<br /><span>Satu Toko.</span></h1>
+      <p>PlayStation, Xbox, sampai Nintendo Switch — pilih disc game yang kamu mau, pesan lewat WhatsApp, dan kami kirim ke rumahmu.</p>
+      <div class="hero-actions">
+        <a href="#katalog" class="btn-primary">Lihat Katalog</a>
+        <a href="#chat" class="btn-ghost">Tanya Rekomendasi AI</a>
+      </div>
     </div>
     <div class="hero-visual">
-      <div class="orb"></div>
+      <div class="orb">🕹️</div>
+      <div class="chip ps">🔵 PlayStation</div>
+      <div class="chip xbox">🟢 Xbox</div>
+      <div class="chip nin">🔴 Nintendo</div>
     </div>
   </header>
 
+  <!-- PLATFORM SECTION -->
+  <section class="section" id="platform">
+    <div class="section-head reveal">
+      <h2>Pilih Konsolmu</h2>
+      <p>Klik salah satu platform untuk langsung melihat game-nya.</p>
+    </div>
+    <div class="platform-grid">
+      <button class="platform-card ps reveal" data-platform="ps5">
+        <span class="pc-icon">🔵</span>
+        <h3>PlayStation</h3>
+        <p>Disc PS5 — exclusive & blockbuster terbaik.</p>
+        <span class="pc-link">Lihat game →</span>
+      </button>
+      <button class="platform-card xbox reveal" data-platform="xbox">
+        <span class="pc-icon">🟢</span>
+        <h3>Xbox</h3>
+        <p>Disc Xbox Series X|S — racing, shooter, dan RPG.</p>
+        <span class="pc-link">Lihat game →</span>
+      </button>
+      <button class="platform-card nin reveal" data-platform="switch">
+        <span class="pc-icon">🔴</span>
+        <h3>Nintendo</h3>
+        <p>Cartridge Switch — seru dimainkan bareng keluarga.</p>
+        <span class="pc-link">Lihat game →</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- CATALOG SECTION -->
+  <section class="section alt" id="katalog">
+    <div class="section-head reveal">
+      <h2>Katalog Game</h2>
+      <p>Klik “Pesan” untuk langsung chat WhatsApp dengan nama game yang sudah terisi.</p>
+    </div>
+
+    <div class="catalog-bar reveal">
+      <div class="filter-tabs" id="filterTabs">
+        <button class="tab active" data-filter="all">Semua</button>
+        <button class="tab" data-filter="ps5">PlayStation</button>
+        <button class="tab" data-filter="xbox">Xbox</button>
+        <button class="tab" data-filter="switch">Nintendo</button>
+      </div>
+      <input type="search" id="searchInput" class="search-input" placeholder="Cari judul game..." autocomplete="off" aria-label="Cari judul game" />
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>Game yang kamu cari belum ada. Coba kata kunci lain atau tanya kami lewat WhatsApp 😊</p>
+    <p class="catalog-note">*Harga dan stok contoh, bisa berubah sewaktu-waktu. Konfirmasi ketersediaan via WhatsApp.</p>
+  </section>
+
   <!-- FEATURES SECTION -->
-  <section class="features">
-    <div class="feature-card">
-      <div class="icon">⚡</div>
-      <h3>Respon Cepat</h3>
-      <p>Jawaban instan tanpa menunggu lama.</p>
+  <section class="section" id="keunggulan">
+    <div class="section-head reveal">
+      <h2>Kenapa Belanja di Sini?</h2>
+      <p>Beli disc game tanpa was-was.</p>
     </div>
-    <div class="feature-card">
-      <div class="icon">🧠</div>
-      <h3>Cerdas & Akurat</h3>
-      <p>Ditenagai model AI terkini yang handal.</p>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="icon">✅</div>
+        <h3>100% Original</h3>
+        <p>Semua disc original dan bersegel, bukan bajakan.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">🚚</div>
+        <h3>Pengiriman Cepat</h3>
+        <p>Dikemas aman dan dikirim ke seluruh Indonesia.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">🛡️</div>
+        <h3>Garansi Tukar</h3>
+        <p>Disc bermasalah saat diterima? Kami bantu tukar.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon">💬</div>
+        <h3>Admin Responsif</h3>
+        <p>Bingung pilih game? Tanya admin atau AI kami.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <div class="icon">🔒</div>
-      <h3>Aman & Privat</h3>
-      <p>Percakapanmu tidak disimpan permanen.</p>
+  </section>
+
+  <!-- HOW TO ORDER -->
+  <section class="section alt" id="cara-pesan">
+    <div class="section-head reveal">
+      <h2>Cara Pesan</h2>
+      <p>Cuma tiga langkah, tanpa ribet.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Pilih Game</h3>
+        <p>Cari game favoritmu di katalog sesuai konsol yang kamu punya.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Chat via WhatsApp</h3>
+        <p>Klik tombol “Pesan”, admin akan konfirmasi stok dan total harga.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Bayar & Terima</h3>
+        <p>Selesaikan pembayaran, disc dikirim, tinggal main!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimoni">
+    <div class="section-head reveal">
+      <h2>Kata Mereka</h2>
+      <p>Pengalaman para gamer yang sudah belanja.</p>
+    </div>
+    <div class="testi-grid">
+      <figure class="testi reveal">
+        <blockquote>“Disc-nya segel dan sampai dengan aman. Adminnya juga sabar jawab pertanyaan.”</blockquote>
+        <figcaption>— Rizky, pemilik PS5</figcaption>
+      </figure>
+      <figure class="testi reveal">
+        <blockquote>“Dapat Forza Horizon 5 dengan harga bersahabat. Pasti beli lagi di sini.”</blockquote>
+        <figcaption>— Dinda, pemilik Xbox Series S</figcaption>
+      </figure>
+      <figure class="testi reveal">
+        <blockquote>“Beli Mario Kart buat main bareng keluarga. Pengirimannya cepat!”</blockquote>
+        <figcaption>— Andre, pemilik Switch</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" id="faq">
+    <div class="section-head reveal">
+      <h2>Pertanyaan Umum</h2>
+    </div>
+    <div class="faq-list">
+      <details class="reveal">
+        <summary>Apakah semua disc original?</summary>
+        <p>Ya, semua produk yang kami jual adalah disc original, bukan bajakan.</p>
+      </details>
+      <details class="reveal">
+        <summary>Bagaimana cara pembayarannya?</summary>
+        <p>Pembayaran dikonfirmasi lewat WhatsApp. Admin akan menginformasikan metode pembayaran yang tersedia saat kamu memesan.</p>
+      </details>
+      <details class="reveal">
+        <summary>Apakah bisa dikirim ke luar kota?</summary>
+        <p>Bisa. Kami mengirim ke seluruh Indonesia, ongkir menyesuaikan kota tujuan.</p>
+      </details>
+      <details class="reveal">
+        <summary>Bagaimana jika disc yang diterima bermasalah?</summary>
+        <p>Hubungi kami lewat WhatsApp beserta foto/video unboxing, kami bantu proses penukarannya.</p>
+      </details>
+      <details class="reveal">
+        <summary>Game yang saya cari tidak ada di katalog?</summary>
+        <p>Tanyakan saja ke admin atau AI kami, kemungkinan bisa dipesan khusus.</p>
+      </details>
     </div>
   </section>
 
@@ -80,15 +239,45 @@
     </div>
   </section>
 
+  <!-- CTA -->
+  <section class="section">
+    <div class="cta-box reveal">
+      <h2>Siap Mulai Main?</h2>
+      <p>Hubungi kami sekarang dan dapatkan game impianmu.</p>
+      <a href="https://wa.me/6281234567890?text=Halo%20Disc%20Arena%2C%20saya%20ingin%20pesan%20game" class="btn-primary btn-wa" target="_blank" rel="noopener">Chat WhatsApp Sekarang</a>
+    </div>
+  </section>
+
   <!-- FOOTER -->
-  <footer>
-    <p>© 2026 AI Agent · Dibuat dengan ❤️</p>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <a href="#beranda" class="logo">🎮 Disc<span>Arena</span></a>
+        <p class="footer-desc">Toko disc game original untuk PlayStation, Xbox, dan Nintendo Switch.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="#katalog">Katalog</a></li>
+          <li><a href="#cara-pesan">Cara Pesan</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp: 0812-3456-7890</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">© 2026 Disc Arena · Dibuat dengan ❤️</p>
   </footer>
 
   <!-- WHATSAPP FLOATING BUTTON -->
-  <a href="https://wa.me/6280000000000?text=Halo%2C%20saya%20ingin%20bertanya" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20ingin%20bertanya" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
     <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.374 3 4 8.373 4 15c0 2.385.697 4.607 1.894 6.48L4 29l7.7-1.857A11.94 11.94 0 0 0 16.003 27C22.63 27 28 21.627 28 15S22.63 3 16.003 3zm0 21.8a9.8 9.8 0 0 1-5.01-1.375l-.36-.214-4.57 1.1 1.14-4.45-.235-.37A9.77 9.77 0 0 1 6.2 15c0-5.42 4.39-9.8 9.803-9.8S25.8 9.58 25.8 15s-4.39 9.8-9.797 9.8zm5.37-7.34c-.295-.147-1.74-.858-2.01-.956-.27-.098-.466-.147-.662.147-.196.295-.76.956-.932 1.153-.172.196-.344.22-.638.074-.295-.147-1.244-.458-2.37-1.46-.876-.78-1.467-1.745-1.64-2.04-.17-.295-.018-.454.13-.6.133-.132.295-.344.442-.516.147-.172.196-.295.295-.49.098-.197.05-.37-.025-.517-.074-.147-.662-1.595-.907-2.184-.24-.574-.482-.496-.662-.505l-.564-.01c-.196 0-.515.074-.785.37-.27.294-1.03 1.007-1.03 2.455s1.055 2.848 1.202 3.045c.147.196 2.077 3.172 5.03 4.448.703.303 1.25.484 1.677.62.705.224 1.346.192 1.853.117.565-.084 1.74-.711 1.986-1.398.245-.687.245-1.276.172-1.398-.074-.123-.27-.197-.565-.344z"/></svg>
-    <span>0800-0000-0000</span>
+    <span>0812-3456-7890</span>
   </a>
 
   <script src="script.js"></script>
