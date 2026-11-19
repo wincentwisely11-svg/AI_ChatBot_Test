@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Agent Chat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="badge">✦ Powered by AI</div>
+      <h1>Tanya Apa Saja,<br /><span>Dijawab Seketika.</span></h1>
+      <p>AI Agent siap membantu kamu 24/7. Ketik pertanyaanmu dan dapatkan jawaban cerdas secara langsung.</p>
+      <a href="#chat" class="btn-primary">Mulai Chat</a>
+    </div>
+    <div class="hero-visual">
+      <div class="orb"></div>
+    </div>
+  </header>
+
+  <!-- FEATURES SECTION -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="icon">⚡</div>
+      <h3>Respon Cepat</h3>
+      <p>Jawaban instan tanpa menunggu lama.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🧠</div>
+      <h3>Cerdas & Akurat</h3>
+      <p>Ditenagai model AI terkini yang handal.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🔒</div>
+      <h3>Aman & Privat</h3>
+      <p>Percakapanmu tidak disimpan permanen.</p>
+    </div>
+  </section>
+
+  <!-- CHAT SECTION -->
+  <section class="chat-section" id="chat">
+    <h2>Coba Sekarang</h2>
+    <p class="chat-subtitle">Ketik pertanyaanmu di bawah ini.</p>
+
+    <div class="chat-container">
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <div class="avatar">🤖</div>
+          <div class="bubble">Halo! Ada yang bisa saya bantu? 😊</div>
+        </div>
+      </div>
+
+      <!-- Toolbar format teks -->
+      <div class="format-toolbar" id="formatToolbar">
+        <button type="button" class="fmt-btn" data-cmd="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+        <button type="button" class="fmt-btn" data-cmd="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+        <button type="button" class="fmt-btn" data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+        <select id="fontSelect" title="Pilih font">
+          <option value="Segoe UI">Normal</option>
+          <option value="Arial">Arial</option>
+          <option value="Georgia">Serif</option>
+          <option value="Courier New">Monospace</option>
+          <option value="Comic Sans MS">Santai</option>
+        </select>
+      </div>
+
+      <div class="chat-input-area">
+        <div
+          id="userInput"
+          contenteditable="true"
+          role="textbox"
+          aria-label="Ketik pesan"
+          data-placeholder="Ketik pesan..."
+        ></div>
+        <button id="sendBtn">Kirim</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 AI Agent · Dibuat dengan ❤️</p>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/6280000000000?text=Halo%2C%20saya%20ingin%20bertanya" class="wa-float" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M16.003 3C9.374 3 4 8.373 4 15c0 2.385.697 4.607 1.894 6.48L4 29l7.7-1.857A11.94 11.94 0 0 0 16.003 27C22.63 27 28 21.627 28 15S22.63 3 16.003 3zm0 21.8a9.8 9.8 0 0 1-5.01-1.375l-.36-.214-4.57 1.1 1.14-4.45-.235-.37A9.77 9.77 0 0 1 6.2 15c0-5.42 4.39-9.8 9.803-9.8S25.8 9.58 25.8 15s-4.39 9.8-9.797 9.8zm5.37-7.34c-.295-.147-1.74-.858-2.01-.956-.27-.098-.466-.147-.662.147-.196.295-.76.956-.932 1.153-.172.196-.344.22-.638.074-.295-.147-1.244-.458-2.37-1.46-.876-.78-1.467-1.745-1.64-2.04-.17-.295-.018-.454.13-.6.133-.132.295-.344.442-.516.147-.172.196-.295.295-.49.098-.197.05-.37-.025-.517-.074-.147-.662-1.595-.907-2.184-.24-.574-.482-.496-.662-.505l-.564-.01c-.196 0-.515.074-.785.37-.27.294-1.03 1.007-1.03 2.455s1.055 2.848 1.202 3.045c.147.196 2.077 3.172 5.03 4.448.703.303 1.25.484 1.677.62.705.224 1.346.192 1.853.117.565-.084 1.74-.711 1.986-1.398.245-.687.245-1.276.172-1.398-.074-.123-.27-.197-.565-.344z"/></svg>
+    <span>0800-0000-0000</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
